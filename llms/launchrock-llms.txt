@@ -1,0 +1,58 @@
+# Launchrock
+
+> Launchrock is a hosted launch-page and customer-acquisition tool for early-stage
+> founders. It provides a drag-and-drop WYSIWYG builder for pre-launch marketing
+> pages, email capture forms, viral referral/sharing mechanics and simple survey
+> questions, so a founder can stand up a "coming soon" site and collect a waitlist
+> of early users before a product ships. Launchrock is operated as one product line
+> of the Startups.com platform, alongside Fundable, Bizplan and Clarity.fm, and is
+> bundled into the Startups Unlimited subscription. Vevo, HotelTonight and theCHIVE
+> are cited as sites that launched on the platform. Launchrock was originally a
+> 500 Global (500 Startups) portfolio company.
+
+## Status
+
+- No public API. As of 2026-07-19 Launchrock publishes no developer portal, API
+  reference, OpenAPI or AsyncAPI description, SDKs, CLI, Postman collection,
+  webhook catalog or sandbox. Probes of /api, /docs, /developers, /developer and
+  of the api., developers., developer., docs., status. and trust. subdomains all
+  returned 404 or resolved onto the generic Startups.com site cluster.
+- No /.well-known/ documents and no /llms.txt are served.
+- The historic blog.launchrock.com is dead (redirects to a 404).
+- Delivery is entirely through the hosted web application; collected signups are
+  worked through the Launchrock dashboard and its email integration rather than
+  through a programmatic interface.
+
+## Product
+
+- [How it works](https://www.launchrock.com/how-it-works): The launch-page builder and customer-capture flow.
+- [Browse](https://www.launchrock.com/browse): Gallery of sites built on the platform.
+- [Pricing](https://www.launchrock.com/pricing): Plans, sold through the Startups.com subscription.
+- [Education](https://www.launchrock.com/education): Founder courses and how-to guides on customer acquisition.
+- [Community](https://www.launchrock.com/community): Founder and mentor discussion network.
+
+## Account
+
+- [Sign up](https://www.launchrock.com/signup/register)
+- [Log in](https://www.launchrock.com/login)
+
+## Support
+
+- [Support](https://www.launchrock.com/support)
+- [Help center](https://help.startups.com/knowledge/launchrock): Launchrock knowledge base on Startups.com, covering custom URLs and DNS, getting started, video tutorials, account and profile management, email integration, and payments and fees.
+
+## Company
+
+- [About](https://www.launchrock.com/about)
+- [Startups.com](https://www.startups.com/): Parent platform.
+
+## Legal
+
+- [Terms of service](https://www.launchrock.com/legal/terms-of-service)
+- [Privacy policy](https://www.launchrock.com/legal/privacy-policy)
+
+## API Evangelist artifacts
+
+- [apis.yml](https://raw.githubusercontent.com/api-evangelist/launchrock/refs/heads/main/apis.yml): APIs.json profile for Launchrock.
+- [Domain security](https://raw.githubusercontent.com/api-evangelist/launchrock/refs/heads/main/security/launchrock-domain-security.yml): Probed TLS, HSTS, DNSSEC, CAA, SPF and DMARC posture.
+- [Well-known probe](https://raw.githubusercontent.com/api-evangelist/launchrock/refs/heads/main/well-known/launchrock-well-known.yml): Recorded result of the discovery-surface probe.

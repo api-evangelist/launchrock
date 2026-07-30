@@ -1,0 +1,87 @@
+generated: '2026-07-19'
+method: probed
+source: https://www.launchrock.com
+name: Launchrock well-known probe
+description: >-
+  Probe of standard /.well-known/ discovery paths and legacy developer subdomains
+  on Launchrock's public hosts. No path returned 200; absence is recorded as valid
+  data. No raw files saved.
+hosts:
+- host: www.launchrock.com
+  paths:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /llms.txt
+    status: 404
+    file: null
+paths_probed_on_site:
+- path: /api
+  status: 404
+- path: /docs
+  status: 404
+- path: /developers
+  status: 404
+- path: /developer
+  status: 404
+- path: /blog
+  status: 404
+- path: /changelog
+  status: 404
+- path: /status
+  status: 404
+subdomains_probed:
+- host: api.launchrock.com
+  resolves: true
+  note: >-
+    Wildcard DNS onto the Startups.com site cluster; no API is served. Root
+    request lands on www.startups.com, not an API host.
+- host: developers.launchrock.com
+  resolves: true
+  note: Wildcard DNS onto the Startups.com site cluster; no developer portal served.
+- host: developer.launchrock.com
+  resolves: true
+  status: 404
+- host: docs.launchrock.com
+  resolves: true
+  note: >-
+    Legacy CNAME to ghs.google.com; redirects to a Google Workspace Drive sign-in
+    for the launchrock.com domain. Internal, not public API documentation.
+- host: support.launchrock.com
+  resolves: true
+  status: 200
+  note: Redirects to https://www.launchrock.com/support (the live help surface).
+- host: help.launchrock.com
+  resolves: true
+  status: 200
+  note: Redirects to https://help.startups.com/knowledge/launchrock.
+- host: blog.launchrock.com
+  resolves: true
+  status: 404
+  note: >-
+    Legacy S3 website bucket; redirects to blog.launchrock.co which is dead. The
+    historic Launchrock blog is no longer published.
+- host: status.launchrock.com
+  resolves: true
+  status: 404
+- host: trust.launchrock.com
+  resolves: true
+  status: 404
+summary: >-
+  Launchrock publishes no well-known discovery documents, no security.txt, and no
+  llms.txt. There is no OAuth/OIDC authorization-server metadata, no API catalog,
+  and no reachable developer, documentation, status or trust host. This is
+  consistent with a hosted no-code landing-page builder operated as a product line
+  of Startups.com, with no third-party developer program.
