@@ -1,19 +1,61 @@
 aid: launchrock
 name: LaunchRock
-description: LaunchRock is a company surfaced as a portfolio company of 500-global and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Launchrock is a hosted launch-page and customer-acquisition tool for early-stage
+  founders. It provides a drag-and-drop WYSIWYG builder for pre-launch marketing
+  pages, email capture forms, viral referral and social-sharing mechanics, and
+  simple survey questions, so a founder can stand up a "coming soon" site and
+  collect a waitlist of early users before a product ships. The platform pairs the
+  builder with an education layer of founder courses, masterclass videos and
+  how-to guides on customer acquisition, plus a community of mentors and founders.
+  Launchrock is operated as one product line of the Startups.com platform,
+  alongside Fundable, Bizplan and Clarity.fm, and is bundled into the Startups
+  Unlimited subscription; its help content is served from the Startups.com
+  knowledge base. Vevo, HotelTonight and theCHIVE are cited as sites that launched
+  on the platform. Launchrock was originally a 500 Global (500 Startups) portfolio
+  company. As of this profile Launchrock publishes no public API, developer portal,
+  API reference, OpenAPI description, SDKs, CLI, webhook catalog or sandbox;
+  delivery is entirely through the hosted web application.
+accessModel:
+  pricing: unknown
+  onboarding: approval
+  trial: false
+  try_now: false
+  public: false
+  label: Requires approval
+  confidence: medium
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://s3.amazonaws.com/app-assets.startups.com/launchrock-share-default.jpg
 url: https://raw.githubusercontent.com/api-evangelist/launchrock/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - 500-global
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: no-public-api
+x-tier-reason: >-
+  Enriched 2026-07-19. Probed the full developer surface: /api, /docs, /developers,
+  /developer, /blog, /changelog and /status on launchrock.com all 404; the api.,
+  developers., developer., docs., status., trust. and blog. subdomains either 404,
+  resolve onto the generic Startups.com site cluster, or are dead legacy hosts. No
+  /.well-known/ documents, no /llms.txt, no public OpenAPI, SDK, CLI or Postman
+  collection. No-code landing-page builder delivered as a Startups.com product line.
+  Identity, well-known probe, domain-security and llms.txt artifacts only.
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
+- Landing Pages
+- Website Builder
+- No Code
+- Customer Acquisition
+- Email Capture
+- Waitlists
+- Product Launch
+- Startups
+- Marketing
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -22,4 +64,39 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://launchrock.com
+  url: https://www.launchrock.com/
+- type: HowItWorks
+  url: https://www.launchrock.com/how-it-works
+- type: Pricing
+  url: https://www.launchrock.com/pricing
+- type: SignUp
+  url: https://www.launchrock.com/signup/register
+- type: Login
+  url: https://www.launchrock.com/login
+- type: Support
+  url: https://www.launchrock.com/support
+- type: HelpCenter
+  url: https://help.startups.com/knowledge/launchrock
+- type: Community
+  url: https://www.launchrock.com/community
+- type: Education
+  url: https://www.launchrock.com/education
+- type: Showcase
+  url: https://www.launchrock.com/browse
+- type: About
+  url: https://www.launchrock.com/about
+- type: TermsOfService
+  url: https://www.launchrock.com/legal/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.launchrock.com/legal/privacy-policy
+- type: DomainSecurity
+  url: security/launchrock-domain-security.yml
+- type: WellKnown
+  url: well-known/launchrock-well-known.yml
+- type: LLMsTxt
+  url: llms/launchrock-llms.txt
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
