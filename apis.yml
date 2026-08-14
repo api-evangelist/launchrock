@@ -35,16 +35,21 @@ x-backed-by:
 - 500-global
 x-tier: no-public-api
 x-tier-reason: >-
-  Enriched 2026-07-19. Probed the full developer surface: /api, /docs, /developers,
-  /developer, /blog, /changelog and /status on launchrock.com all 404; the api.,
-  developers., developer., docs., status., trust. and blog. subdomains either 404,
-  resolve onto the generic Startups.com site cluster, or are dead legacy hosts. No
-  /.well-known/ documents, no /llms.txt, no public OpenAPI, SDK, CLI or Postman
-  collection. No-code landing-page builder delivered as a Startups.com product line.
-  Identity, well-known probe, domain-security and llms.txt artifacts only.
+  Re-enriched 2026-08-13 with full STEP 0b contract discovery. /api, /docs,
+  /developers, /developer, /blog, /changelog and /status on launchrock.com all 404;
+  /openapi.json, /swagger.json and /api-docs return the SPA HTML shell; the api.,
+  app., developers., developer., docs., status., trust. and blog. subdomains either
+  404, resolve onto the generic Startups.com site cluster, or are dead legacy hosts.
+  No /.well-known/ documents, no agent card at either the canonical or legacy path,
+  no /llms.txt, no public OpenAPI, SDK, CLI or Postman collection, and no GitHub
+  organization. One live machine surface exists and is not a developer API: an
+  internal Apollo GraphQL endpoint at /graphql serving the shared Startups.com
+  application, with introspection disabled in production. No-code landing-page
+  builder delivered as a Startups.com product line. Identity, contract-discovery
+  probe, domain-security, plans, packages, rate-limits and llms.txt artifacts only.
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-19'
+modified: '2026-08-13'
 tags:
 - Company
 - Landing Pages
@@ -91,12 +96,41 @@ common:
   url: https://www.launchrock.com/legal/privacy-policy
 - type: DomainSecurity
   url: security/launchrock-domain-security.yml
-- type: WellKnown
-  url: well-known/launchrock-well-known.yml
 - type: LLMsTxt
   url: llms/launchrock-llms.txt
+- type: Plans
+  url: plans/launchrock-plans-pricing.yml
+- type: Packages
+  url: packages/launchrock-packages.yml
+- type: RateLimits
+  url: rate-limits/launchrock-rate-limits.yml
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-13'
+  status: minimal
+  artifacts_added: 3
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
+  note: >-
+    Full STEP 0b contract discovery re-run. No published contract. The prior
+    WellKnown pointer was removed: its own probe records a 404 on every path, so
+    the pointer asserted a served surface that does not exist. The well-known probe
+    file is retained as evidence and now also carries the contract-discovery record.
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Launchrock ships only an end-user landing-page builder; the single live machine
+    surface on its domain is an internal Apollo GraphQL endpoint at
+    /graphql that backs the Startups.com web app, with introspection disabled in
+    production and no schema, reference or developer terms published anywhere.
+  evidence:
+  - url: https://www.launchrock.com/graphql
+    status: 400
+  - url: https://www.launchrock.com/openapi.json
+    status: 404
+  - url: https://www.launchrock.com/.well-known/agent-card.json
+    status: 404
+  - url: https://www.launchrock.com/developers
+    status: 404
+  - url: https://api.github.com/orgs/launchrock
+    status: 404
+  checked: '2026-08-13'
