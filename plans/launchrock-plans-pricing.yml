@@ -1,0 +1,71 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.launchrock.com/pricing
+name: Launchrock plans and pricing
+description: >-
+  Launchrock is not sold as a standalone product. Its published pricing page sells
+  the Startups.com "Startups Unlimited" subscription, which bundles Launchrock with
+  Bizplan, Fundable, the Startup University course library and the founder community.
+  Every tier below carries the same feature set ("unlimited launch sites and premium
+  features") and differs only in billing term. There is no free tier, no usage
+  metering, no per-seat pricing and no API-related quota or overage, because there is
+  no public API to meter. Billing is processed through Chargebee (chargebee.js is
+  loaded on the pricing page).
+product: Startups Unlimited (includes Launchrock)
+currency: USD
+plan_count: 3
+metering: none
+free_tier: false
+api_access_included: false
+plans:
+- name: Monthly
+  price: 29.00
+  currency: USD
+  period: month
+  billing: monthly
+  included: unlimited launch sites and premium features
+  quota: unlimited
+  overage: null
+  api_quota: null
+  note: Listed as the standard month-to-month term.
+- name: Annual
+  price: 20.75
+  currency: USD
+  period: month
+  billing: annual
+  billed_total: 249.00
+  billed_period: year
+  included: unlimited launch sites and premium features
+  quota: unlimited
+  overage: null
+  api_quota: null
+  note: Marked "Most Popular" on the pricing page; billed at $249 per year.
+- name: Lifetime Access
+  price: 349.00
+  currency: USD
+  period: one-time
+  billing: one-time
+  included: unlimited launch sites and premium features
+  quota: unlimited
+  overage: null
+  api_quota: null
+  note: One-time payment for perpetual access.
+bundle_includes:
+- Launchrock.com — early customer acquisition platform
+- Bizplan.com — business planning tool
+- Fundable.com — equity fundraising platform
+- Startups.com — Startup University courses and master classes
+- Founder community, forums, answers and the Startup Therapy podcast
+promo_codes: >-
+  The pricing page exposes an "Have an access/promo code?" field; no public code
+  list is published.
+x-evidence:
+  fetched: '2026-08-13'
+  url: https://www.launchrock.com/pricing
+  http_status: 200
+  content_type: text/html
+  note: >-
+    Prices read verbatim from the rendered pricing page. The page title resolves to
+    "Pricing | Startups.com" and the footer is "Copyright 2026 Startups.com LLC",
+    confirming Launchrock is billed as a Startups.com product line rather than
+    separately.

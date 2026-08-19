@@ -1,0 +1,46 @@
+generated: '2026-08-13'
+method: probed
+source: https://www.launchrock.com/graphql
+name: Launchrock rate limits
+description: >-
+  Launchrock publishes no rate limits, because it publishes no public API. limit_count
+  is an honest zero. The one rate-limit signal observed anywhere on a Launchrock host
+  comes from the shared Startups.com application backend at
+  https://www.launchrock.com/graphql — an internal, undocumented Apollo Server that
+  emits x-rl-* counters on rejected requests. That endpoint is not a developer surface
+  (introspection is disabled, GET returns 401, there is no documentation of any kind),
+  so its counters are recorded below as an observation only and are deliberately NOT
+  presented as a published rate-limit policy.
+limit_count: 0
+documented: false
+docs: null
+limits: []
+observed_headers:
+- header: x-rl-tot
+  observed_value: '10000'
+  meaning: >-
+    Total requests allowed in the window. Inferred from the header name only; the
+    provider documents nothing.
+- header: x-rl-rem
+  observed_value: '9980'
+  meaning: Requests remaining in the window (inferred from the name).
+- header: x-rl-res
+  observed_value: '1786629699'
+  meaning: >-
+    Unix epoch seconds at which the window resets (inferred; the value decodes to a
+    time shortly after the probe).
+standard_headers:
+  ratelimit_draft: false
+  x_ratelimit: false
+  retry_after: not observed
+exhaustion_status: not observed
+x-evidence:
+  fetched: '2026-08-13'
+  url: https://www.launchrock.com/graphql
+  http_status: 401
+  content_type: application/json; charset=utf-8
+  note: >-
+    x-rl-tot / x-rl-rem / x-rl-res were returned on an unauthenticated GET (401 "Not
+    Allowed") and on an unauthenticated POST carrying an introspection query (400).
+    They were NOT present on the successful POST. No published documentation names
+    these headers anywhere on launchrock.com or help.startups.com.

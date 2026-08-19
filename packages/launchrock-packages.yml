@@ -1,0 +1,65 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  registry.npmjs.org search, pypi.org, rubygems.org, packagist.org, api.github.com
+name: Launchrock client libraries and packages
+description: >-
+  Launchrock publishes no first-party client library in any package registry, and has
+  no GitHub organization (api.github.com/orgs/launchrock returns 404). The only
+  package carrying the Launchrock name is a third-party Ruby gem published in 2013
+  against a Launchrock API that no longer exists; it is recorded here as a historical
+  signal, not as a supported SDK. official_count is 0.
+official_count: 0
+package_count: 1
+packages:
+- language: ruby
+  registry: rubygems
+  name: launchrock
+  url: https://rubygems.org/gems/launchrock
+  install: gem install launchrock
+  official: false
+  version: 1.0.0
+  published: '2013-06-15'
+  homepage: https://github.com/kenmazaika/launchrock
+  status: abandoned
+  note: >-
+    Third-party gem by Ken Mazaika, described in its own registry metadata as "A ruby
+    gem to integrate with the launchrock API". Last and only release 2013-06-15, over
+    thirteen years ago. Its linked source repository (github.com/kenmazaika/launchrock)
+    returns 404 — the repo has been deleted. This is the strongest available evidence
+    that Launchrock once exposed a public API in the 2012-2013 era; that API is gone
+    and nothing has replaced it. NOT first-party and NOT usable.
+registries_probed:
+- registry: npm
+  query: launchrock
+  status: 200
+  result: >-
+    No package named launchrock and no @launchrock scope. Search returns only
+    unrelated landing-page component libraries (neal-react, react-landing-components,
+    wroxbox-react).
+- registry: pypi
+  url: https://pypi.org/pypi/launchrock/json
+  status: 404
+  result: no package
+- registry: rubygems
+  url: https://rubygems.org/api/v1/gems/launchrock.json
+  status: 200
+  result: one third-party package, recorded above
+- registry: packagist
+  url: https://packagist.org/search.json?q=launchrock
+  status: 200
+  result: 0 results
+- registry: github
+  url: https://api.github.com/orgs/launchrock
+  status: 404
+  result: >-
+    No Launchrock GitHub organization. A repository search returns only third-party
+    projects — django-launchrock, launchpage-rails and gulp-aws-splash describe
+    themselves as open-source ALTERNATIVES to Launchrock, and launchchimp is a
+    2013-era Launchrock-to-Mailchimp bridge. None are published by the company.
+x-evidence:
+  fetched: '2026-08-13'
+  note: >-
+    All registry metadata endpoints answered unauthenticated. Version and publish date
+    for the Ruby gem are read from rubygems.org/api/v1/gems/launchrock.json
+    (version 1.0.0, version_created_at 2013-06-15T06:50:48Z).

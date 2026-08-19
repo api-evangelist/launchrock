@@ -1,11 +1,14 @@
-generated: '2026-07-19'
+generated: '2026-08-13'
 method: probed
 source: https://www.launchrock.com
-name: Launchrock well-known probe
+name: Launchrock well-known and contract-discovery probe
 description: >-
-  Probe of standard /.well-known/ discovery paths and legacy developer subdomains
-  on Launchrock's public hosts. No path returned 200; absence is recorded as valid
-  data. No raw files saved.
+  Probe of standard /.well-known/ discovery paths, agent-card paths, OpenAPI locations
+  and legacy developer subdomains on Launchrock's public hosts. No path returned a
+  document. Absence is recorded as valid data. No raw files were saved, and NO
+  WellKnown or SecurityTxt pointer is emitted in apis.yml, because a probe that
+  records a 404 on every path must not be scored as a served surface.
+served_documents: 0
 hosts:
 - host: www.launchrock.com
   paths:
@@ -18,16 +21,137 @@ hosts:
   - path: /.well-known/oauth-authorization-server
     status: 404
     file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
   - path: /.well-known/api-catalog
     status: 404
     file: null
   - path: /.well-known/ai-plugin.json
     status: 404
     file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
   - path: /llms.txt
     status: 404
     file: null
-paths_probed_on_site:
+  note: >-
+    Every 404 above is served with a text/html body — the Startups.com single-page
+    application's catch-all error page, not a document. Nothing here is a soft-200.
+contract_discovery:
+  summary: >-
+    STEP 0b contract discovery was re-run in full against every Launchrock host. One
+    live machine surface exists and it is not a published contract: an internal Apollo
+    GraphQL endpoint that backs the Startups.com web application.
+  openapi:
+    found: false
+    probed:
+    - url: https://www.launchrock.com/openapi.json
+      status: 404
+      body: SPA HTML shell
+    - url: https://www.launchrock.com/swagger.json
+      status: 404
+      body: SPA HTML shell
+    - url: https://www.launchrock.com/api-docs
+      status: 404
+      body: SPA HTML shell
+    - url: https://api.launchrock.com/openapi.json
+      status: 429
+      body: >-
+        Redirects to www.startups.com, which answered 429 to every request during the
+        probe window. api.launchrock.com is a CNAME onto site.startups.com — wildcard
+        DNS, no API host behind it.
+    - url: https://api.launchrock.com/v1/openapi.json
+      status: 429
+    - url: https://api.launchrock.com/swagger.json
+      status: 429
+    - url: https://api.launchrock.com/docs
+      status: 429
+  graphql:
+    found: true
+    published: false
+    endpoint: https://www.launchrock.com/graphql
+    server: Apollo Server
+    introspection: disabled
+    sdl_captured: false
+    evidence:
+    - url: https://www.launchrock.com/graphql
+      method: GET
+      status: 401
+      body: '{"error":"Not Allowed"}'
+    - url: https://www.launchrock.com/graphql
+      method: POST
+      status: 400
+      body: >-
+        {"errors":[{"message":"GraphQL introspection is not allowed by Apollo Server...
+        "extensions":{"validationErrorCode":"INTROSPECTION_DISABLED"}}]}
+    - url: https://www.launchrock.com/graphql
+      method: POST
+      status: 200
+      body: '{"data":{"__typename":"Query"}}'
+      note: >-
+        A valid non-introspection query succeeds unauthenticated when an Origin header
+        is sent, confirming the server is live rather than a stub.
+    ownership: >-
+      The endpoint is served from Launchrock's own domain but belongs to the shared
+      Startups.com platform, not to a Launchrock developer program. Response headers
+      carry x-sco-host: startups3-production-1/-2 (sco = Startups.CO), and
+      access-control-allow-origin reflects whichever Startups.com brand origin is sent
+      (www.startups.com and www.launchrock.com both accepted). The launchrock.com front
+      end is the Startups.com React application — its script bundles are served from a
+      shared CloudFront distribution and include chunks named
+      "Account-Products-Launchrock" and "Account-Products-Bizplan" side by side.
+    verdict: >-
+      NOT recorded as a published contract and NOT wired to a GraphQL pointer. No SDL
+      is obtainable (introspection is disabled in production), no schema, no reference,
+      no authentication documentation and no developer terms exist for it. It is the
+      web app's private backend, and treating it as an API surface would credit
+      Launchrock with a developer program it does not run.
+  mcp:
+    found: false
+    note: No hosted MCP server is advertised on any Launchrock or Startups.com surface.
+  agent_card:
+    found: false
+    note: >-
+      Both /.well-known/agent-card.json and the legacy /.well-known/agent.json return
+      404 with an HTML body on www.launchrock.com. Per the pipeline's search-only rule,
+      no a2a/ artifact was written.
+  asyncapi:
+    found: false
+    note: >-
+      No webhook, event or streaming surface is documented. The Launchrock help center
+      (help.startups.com/knowledge/launchrock) contains zero occurrences of the word
+      "API" — its Launchrock section is entirely DNS A-record and CNAME instructions
+      for pointing a custom domain at a launch page.
+site_paths_probed:
+- path: /pricing
+  status: 200
+- path: /support
+  status: 200
+- path: /browse
+  status: 200
+- path: /about
+  status: 200
+- path: /education
+  status: 200
+- path: /community
+  status: 200
+- path: /how-it-works
+  status: 200
+- path: /legal/terms-of-service
+  status: 200
+- path: /legal/privacy-policy
+  status: 200
+- path: /signup/register
+  status: 200
+- path: /robots.txt
+  status: 200
+- path: /sitemap.xml
+  status: 200
 - path: /api
   status: 404
 - path: /docs
@@ -42,27 +166,45 @@ paths_probed_on_site:
   status: 404
 - path: /status
   status: 404
+sitemap:
+  url: https://www.launchrock.com/sitemap.xml
+  status: 200
+  url_count: 13524
+  hosts_listed:
+  - www.startups.com
+  note: >-
+    The sitemap served at launchrock.com is the Startups.com sitemap; every one of its
+    13,524 URLs is on www.startups.com and none is a developer, API, docs, changelog or
+    status page. robots.txt likewise points at https://www.startups.com/sitemap.xml.
 subdomains_probed:
 - host: api.launchrock.com
   resolves: true
+  status: 429
   note: >-
-    Wildcard DNS onto the Startups.com site cluster; no API is served. Root
-    request lands on www.startups.com, not an API host.
+    CNAME chain www.launchrock.com -> site.startups.com. Wildcard DNS onto the
+    Startups.com site cluster; requests land on www.startups.com, not an API host.
+- host: app.launchrock.com
+  resolves: true
+  status: 429
+  note: Same CNAME chain onto site.startups.com. No application host of its own.
 - host: developers.launchrock.com
   resolves: true
-  note: Wildcard DNS onto the Startups.com site cluster; no developer portal served.
+  status: 429
+  note: Resolves onto the Startups.com cluster; no developer portal served.
 - host: developer.launchrock.com
   resolves: true
   status: 404
 - host: docs.launchrock.com
   resolves: true
+  status: 000
   note: >-
-    Legacy CNAME to ghs.google.com; redirects to a Google Workspace Drive sign-in
-    for the launchrock.com domain. Internal, not public API documentation.
+    Legacy CNAME to ghs.google.com. Connection failed on this pass; on the previous
+    pass it redirected to a Google Workspace sign-in for the launchrock.com domain.
+    Internal, never public API documentation.
 - host: support.launchrock.com
   resolves: true
   status: 200
-  note: Redirects to https://www.launchrock.com/support (the live help surface).
+  note: Redirects to https://www.launchrock.com/support.
 - host: help.launchrock.com
   resolves: true
   status: 200
@@ -71,8 +213,8 @@ subdomains_probed:
   resolves: true
   status: 404
   note: >-
-    Legacy S3 website bucket; redirects to blog.launchrock.co which is dead. The
-    historic Launchrock blog is no longer published.
+    Legacy S3 website bucket redirecting to the dead blog.launchrock.co. The historic
+    Launchrock blog is no longer published.
 - host: status.launchrock.com
   resolves: true
   status: 404
@@ -80,8 +222,9 @@ subdomains_probed:
   resolves: true
   status: 404
 summary: >-
-  Launchrock publishes no well-known discovery documents, no security.txt, and no
-  llms.txt. There is no OAuth/OIDC authorization-server metadata, no API catalog,
-  and no reachable developer, documentation, status or trust host. This is
-  consistent with a hosted no-code landing-page builder operated as a product line
-  of Startups.com, with no third-party developer program.
+  Launchrock serves no well-known discovery document, no security.txt, no agent card,
+  no llms.txt, no OpenAPI and no API catalog. The only machine-readable surface reachable
+  on any of its hosts is the Startups.com application's private GraphQL backend, whose
+  introspection is disabled and which is documented nowhere. This is consistent with a
+  hosted no-code landing-page builder operated as a product line of Startups.com, with
+  no third-party developer program of any kind.

@@ -12,16 +12,45 @@
 
 ## Status
 
-- No public API. As of 2026-07-19 Launchrock publishes no developer portal, API
-  reference, OpenAPI or AsyncAPI description, SDKs, CLI, Postman collection,
-  webhook catalog or sandbox. Probes of /api, /docs, /developers, /developer and
-  of the api., developers., developer., docs., status. and trust. subdomains all
-  returned 404 or resolved onto the generic Startups.com site cluster.
-- No /.well-known/ documents and no /llms.txt are served.
+- No public API. Re-probed 2026-08-13: Launchrock publishes no developer portal,
+  API reference, OpenAPI or AsyncAPI description, GraphQL schema, SDK, CLI,
+  Postman collection, webhook catalog or sandbox. Probes of /api, /docs,
+  /developers, /developer, /changelog and /status, and of the api., app.,
+  developers., developer., docs., status. and trust. subdomains, all returned 404
+  or resolved onto the generic Startups.com site cluster.
+- No /.well-known/ documents, no agent card and no /llms.txt are served on
+  launchrock.com. Both /.well-known/agent-card.json and the legacy
+  /.well-known/agent.json return 404.
+- There IS one live machine surface, and it is not for you: an internal Apollo
+  GraphQL endpoint at https://www.launchrock.com/graphql backs the Startups.com
+  web application. Introspection is disabled in production, GET returns 401
+  "Not Allowed", and no schema, reference or authentication documentation exists
+  for it. It is the app's private backend, not a developer API. Do not treat it
+  as an integration point.
+- No first-party client library exists in any package registry, and there is no
+  Launchrock GitHub organization. The only package bearing the name is a
+  third-party Ruby gem last released 2013-06-15, written against a Launchrock API
+  that no longer exists; its source repository has since been deleted.
+- The sitemap served at launchrock.com is the Startups.com sitemap — 13,524 URLs,
+  none of them developer, API, docs, changelog or status pages.
+- The Launchrock help center contains zero occurrences of the word "API"; its
+  Launchrock section is DNS A-record and CNAME instructions for custom domains.
 - The historic blog.launchrock.com is dead (redirects to a 404).
 - Delivery is entirely through the hosted web application; collected signups are
   worked through the Launchrock dashboard and its email integration rather than
   through a programmatic interface.
+
+## Pricing
+
+Launchrock is not sold standalone. Its pricing page sells the Startups.com
+"Startups Unlimited" bundle (Launchrock + Bizplan + Fundable + Startup
+University), in three billing terms with the same feature set:
+
+- Monthly — $29/mo
+- Annual — $20.75/mo, billed $249/year (marked "Most Popular")
+- Lifetime Access — $349 one-time
+
+There is no free tier, no usage metering and no API quota.
 
 ## Product
 
@@ -55,4 +84,7 @@
 
 - [apis.yml](https://raw.githubusercontent.com/api-evangelist/launchrock/refs/heads/main/apis.yml): APIs.json profile for Launchrock.
 - [Domain security](https://raw.githubusercontent.com/api-evangelist/launchrock/refs/heads/main/security/launchrock-domain-security.yml): Probed TLS, HSTS, DNSSEC, CAA, SPF and DMARC posture.
-- [Well-known probe](https://raw.githubusercontent.com/api-evangelist/launchrock/refs/heads/main/well-known/launchrock-well-known.yml): Recorded result of the discovery-surface probe.
+- [Well-known probe](https://raw.githubusercontent.com/api-evangelist/launchrock/refs/heads/main/well-known/launchrock-well-known.yml): Recorded result of the discovery-surface and contract-discovery probe, including the private GraphQL finding.
+- [Plans and pricing](https://raw.githubusercontent.com/api-evangelist/launchrock/refs/heads/main/plans/launchrock-plans-pricing.yml): The three published Startups Unlimited tiers.
+- [Packages](https://raw.githubusercontent.com/api-evangelist/launchrock/refs/heads/main/packages/launchrock-packages.yml): Registry sweep — zero official client libraries.
+- [Rate limits](https://raw.githubusercontent.com/api-evangelist/launchrock/refs/heads/main/rate-limits/launchrock-rate-limits.yml): Honest zero; no published limits.
