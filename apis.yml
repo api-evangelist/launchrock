@@ -47,7 +47,7 @@ x-tier-reason: >-
   application, with introspection disabled in production. No-code landing-page
   builder delivered as a Startups.com product line. Identity, contract-discovery
   probe, domain-security, plans, packages, rate-limits and llms.txt artifacts only.
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-08-13'
 tags:
