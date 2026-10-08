@@ -69,3 +69,31 @@ x-evidence:
     "Pricing | Startups.com" and the footer is "Copyright 2026 Startups.com LLC",
     confirming Launchrock is billed as a Startups.com product line rather than
     separately.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - subscription
+  units: []
+  plans:
+  - name: Monthly
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Annual
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Lifetime Access
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - one-time
