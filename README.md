@@ -64,31 +64,96 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Launchrock is a hosted launch-page and customer-acquisition tool for early-stage founders — a
-drag-and-drop builder for pre-launch marketing pages with email capture, referral and sharing
-mechanics, and simple surveys, so a founder can collect a waitlist before a product ships. It is
-operated as one product line of the Startups.com platform, alongside Fundable, Bizplan and
-Clarity.fm.
+Launchrock is a hosted launch-page and customer-acquisition tool for early-stage founders. It provides a drag-and-drop WYSIWYG builder for pre-launch marketing pages, email capture forms, viral referral and social-sharing mechanics, and simple survey questions, so a founder can stand up a "coming soon" site and collect a waitlist of early users before a product ships. The platform pairs the builder with an education layer of founder courses, masterclass videos and how-to guides on customer acquisition, plus a community of mentors and founders. Launchrock is operated as one product line of the Startups.com platform, alongside Fundable, Bizplan and Clarity.fm, and is bundled into the Startups Unlimited subscription; its help content is served from the Startups.com knowledge base. Vevo, HotelTonight and theCHIVE are cited as sites that launched on the platform. Launchrock was originally a 500 Global (500 Startups) portfolio company. As of this profile Launchrock publishes no public API, developer portal, API reference, OpenAPI description, SDKs, CLI, webhook catalog or sandbox; delivery is entirely through the hosted web application.
 
-- Website: https://www.launchrock.com/
-- Help center: https://help.startups.com/knowledge/launchrock
-- Backed by: 500-global
+**Areas:** Company · Landing Pages · Website Builder · No-Code · Customer Acquisition · Email Capture · Waitlist · Product Launch · Startups · Marketing
 
-## API status — no public API
+## LaunchRock on APIs.io
 
-As of the 2026-07-19 enrichment pass, Launchrock publishes **no public API**: no developer portal,
-API reference, OpenAPI or AsyncAPI description, SDKs, CLI, Postman collection, webhook catalog or
-sandbox. `/api`, `/docs`, `/developers`, `/developer`, `/blog`, `/changelog` and `/status` all
-return 404, no `/.well-known/` documents or `/llms.txt` are served, and the `api.`, `developers.`,
-`developer.`, `docs.`, `status.`, `trust.` and `blog.` subdomains are either 404, wildcard DNS onto
-the Startups.com site cluster, or dead legacy hosts. Delivery is entirely through the hosted web
-application.
+Everything profiled for LaunchRock is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/launchrock/](https://apis.io/providers/launchrock/)** — or go straight to one of the APIs or properties below.
 
-## Artifacts
+### Published properties
 
-| Artifact | File |
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Launchrock Domain Security](https://apis.io/security/launchrock/launchrock-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Launchrock Plans Pricing](https://apis.io/plans/launchrock/launchrock-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Launchrock Rate Limits](https://apis.io/rate-limits/launchrock/launchrock-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.launchrock.com/)
+- [Pricing](https://www.launchrock.com/pricing)
+- [Sign up](https://www.launchrock.com/signup/register)
+- [Support](https://www.launchrock.com/support)
+- [Terms of service](https://www.launchrock.com/legal/terms-of-service)
+- [Privacy policy](https://www.launchrock.com/legal/privacy-policy)
+
+## API Evangelist rating
+
+**Kin Score 21.5** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
 |---|---|
-| APIs.json profile | `apis.yml` |
-| Domain security (probed) | `security/launchrock-domain-security.yml` |
-| Well-known / discovery probe | `well-known/launchrock-well-known.yml` |
-| llms.txt | `llms/launchrock-llms.txt` |
+| Discoverability | 55.4 |
+| Contract quality | 0.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 4.8 |
+| Access clarity | 76.3 |
+
+**Agent readiness 2.5** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 13.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/launchrock/](https://apis.io/providers/launchrock/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for LaunchRock: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/launchrock/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
